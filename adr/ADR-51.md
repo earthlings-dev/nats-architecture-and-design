@@ -16,6 +16,7 @@
 | 5        | 2026-04-20 | @MauriceVanVeen             | Clarify `Nats-Schedule-Source` on no messages                                              | 2.14.0         |
 | 6        | 2026-04-23 | @MauriceVanVeen             | Clarify stream retention interaction & auto-applied rollup                                 | 2.14.0         |
 | 7        | 2026-04-28 | @ripienaar                  | Document `Nats-Schedule-Time-Zone` format, `@every` minimum & `Nats-Scheduler` error 10212 | 2.14.0         |
+| 8        | 2026-05-27 | @MauriceVanVeen             | Document Discard New is not supported                                                      | TBD            |
 
 ## Context and Motivation
 
@@ -250,6 +251,7 @@ type StreamConfig struct {
 ```
 * If the user intends to use the `Nats-Schedule-TTL` feature, the `AllowMsgTTL` must be true for the stream.
 * Setting this on a Source or Mirror should be denied
+* Stream should not support Discard New with this setting set
 * This feature can be enabled on existing streams but not disabled
 * A Stream with this feature on should require API level 2
 * Schedules are stored as rollup-subject messages: the server auto-applies `Nats-Rollup: sub` if the publisher did not set it. This is why enabling `AllowMsgSchedules` implicitly enables `AllowRollup` and clears `DenyPurge`. Publishing a new schedule to an existing schedule subject replaces the prior one.
