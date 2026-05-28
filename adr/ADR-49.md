@@ -18,6 +18,7 @@
 | 5        | 2025-08-28 | More client implementation details                   |            |                    |
 | 6        | 2025-09-18 | Remove value-only methods from client implementation |            |                    |
 | 7        | 2025-09-30 | Use `omitempty` on configuration fields              |            |                    |
+| 8        | 2026-05-27 | Document message schedules are not supported         |            |                    |
 
 ## Context and Motivation
 
@@ -190,6 +191,7 @@ type StreamConfig struct {
  * This feature can only be enabled during creation, it is read only once the stream exist
  * Stream should not support Discard New with this setting set
  * This setting may not be enabled along with Per Message TTLs
+ * Message schedules (see [ADR-51](ADR-51.md)) are not supported with this setting set
  * A Stream with this feature on should require API level 2
 
 ## Client Considerations
